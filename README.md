@@ -1,2 +1,2 @@
 # SD_Mensajeria
-Sistema Distribuido XMPP - Mensajeria
+Sistema Distribuido JMS - Mensajeria

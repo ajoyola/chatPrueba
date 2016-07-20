@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author JoycePC
+ * * @author joyce-adri
  */
 public class SQLQuery{
     protected Connection conexion;

@@ -7,7 +7,7 @@ package sd_conexion_bd;
 
 /**
  *
- * @author JoycePC
+ * @author joyce-adri
  */
 
 import java.awt.Rectangle;

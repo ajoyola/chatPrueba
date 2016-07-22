@@ -5,6 +5,8 @@
  */
 package sd_mensajeria;
 
+import sd_mensajeria.GUI.Inicio_Sesion;
+
 /**
  *
  * @author User
@@ -15,7 +17,9 @@ public class SD_Mensajeria {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+         
+        Inicio_Sesion f = new Inicio_Sesion(); 
+        f.setVisible (true); 
     }
     
 }

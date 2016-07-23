@@ -7,14 +7,13 @@ package sd_mensajeria.GUI;
 
 import javax.swing.JOptionPane;
 import sd_conexion_bd.Servicios;
+import sd_mensajeria.usuario;
 
 /**
  *
  * @author Kattya Desiderio
  */
 public class Inicio_Sesion extends javax.swing.JFrame {
-    public String datos;
-    public String userName;
     /**
      * Creates new form Inicio_Sesion
      */
@@ -154,7 +153,8 @@ public class Inicio_Sesion extends javax.swing.JFrame {
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
-        Servicios s = new Servicios();        
+        Servicios s = new Servicios(); 
+        usuario UsuarioInfo = new usuario();
         if(txt_user.getText().equals("") || txt_password.getPassword() == null){
             JOptionPane.showMessageDialog(null, "Debe llenar todos los campos", "No ha ingresado datos", JOptionPane.ERROR_MESSAGE);
         }else{
@@ -162,16 +162,13 @@ public class Inicio_Sesion extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Ingrese simbolos validos", "Error en ingreso de datos", JOptionPane.ERROR_MESSAGE);
             }else{
                 //buscar en los user el nombre del usuario
-                String datos = s.validar_userName(txt_user.getText(),txt_password.getText());
-                if(datos !=null){
+                if(s.validar_userName(txt_user.getText(),txt_password.getText(), UsuarioInfo)){
                     this.setVisible(false);
-                    this.datos=datos;
-                    this.userName=txt_user.getText();
-                    this.setVisible(false);
-                    JOptionPane.showMessageDialog(null, "Bienvenid@!!" + datos,"Mensaje", JOptionPane.INFORMATION_MESSAGE);
+                    String datos = UsuarioInfo.getNombre() +" " +UsuarioInfo.getApellido();
+                    JOptionPane.showMessageDialog(null, "Bienvenid@!! " + datos,"Mensaje", JOptionPane.INFORMATION_MESSAGE);
                     java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {
-                            new Principal().setVisible(true);
+                            new Principal(s, datos, UsuarioInfo).setVisible(true);                         
                         }
                     });                    
                 }else{//user incorrecto

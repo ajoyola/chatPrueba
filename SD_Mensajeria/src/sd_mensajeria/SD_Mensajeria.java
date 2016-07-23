@@ -5,6 +5,8 @@
  */
 package sd_mensajeria;
 
+import sd_mensajeria.GUI.Inicio_Sesion;
+
 /**
  *
  * @author User
@@ -16,6 +18,11 @@ public class SD_Mensajeria {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Inicio_Sesion().setVisible(true);
+            }
+        });
     }
     
 }

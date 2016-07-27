@@ -25,7 +25,7 @@ public class Servicios extends SQLQuery{
     
     public boolean validar_userName(String userName, String password, usuario u){
         try{
-            this.conectar("localhost:3306", "mensajeria","root","1234");
+            this.conectar("localhost:3306", "mensajeria","root","");
             this.consulta=this.conexion.prepareStatement("call buscar_por_user(\""+userName+"\",\""+password+"\");");
             this.datos=this.consulta.executeQuery();
             while(this.datos.next()){
@@ -48,7 +48,7 @@ public class Servicios extends SQLQuery{
     */
     public void cargar_contactos(JList lista, String userName, int u_id){
         try{
-            this.conectar("localhost:3306", "mensajeria","root","1234");
+            this.conectar("localhost:3306", "mensajeria","root","");
             this.consulta=this.conexion.prepareStatement("call consultar_contactos(\""+userName+"\",\""+u_id+"\");");
             this.datos=this.consulta.executeQuery();
             DefaultListModel modelo = new DefaultListModel();

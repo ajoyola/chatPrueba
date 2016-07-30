@@ -5,6 +5,9 @@
  */
 package sd_mensajeria;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author JoycePC
@@ -14,12 +17,21 @@ public class usuario {
     public String nombre;
     public String apellido;
     public String user;
+    public ImageIcon foto;
 
     public usuario() {
         this.ID=0;
         this.nombre="nombre usuario";
         this.apellido="apellido";
         this.user ="user";
+    }
+
+    public ImageIcon getFoto() {
+        return foto;
+    }
+
+    public void setFoto(ImageIcon foto) {
+        this.foto = foto;
     }
 
     public int getID() {
@@ -53,4 +65,6 @@ public class usuario {
     public void setUser(String user) {
         this.user = user;
     }
+    
+    
 }

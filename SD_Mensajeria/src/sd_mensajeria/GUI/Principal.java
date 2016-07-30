@@ -5,6 +5,8 @@
  */
 package sd_mensajeria.GUI;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import sd_conexion_bd.Servicios;
 import sd_mensajeria.usuario;
 
@@ -22,8 +24,11 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
         String userName = UserInfo.getUser();
         int u_id=UserInfo.getID();
-        UserName_label.setText("Datos: "+datos);
-        User_label1.setText("Usuario: "+ userName);
+        ImageIcon o = UserInfo.getFoto();
+        
+        User_label1.setText(userName.toUpperCase());
+        User_foto.setIcon(o);
+        
         s.cargar_contactos(contactos_lista, userName, u_id);
         contactos_lista.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         contactos_lista.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -53,8 +58,9 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         opciones_List = new javax.swing.JList();
         jPanel1 = new javax.swing.JPanel();
-        UserName_label = new javax.swing.JLabel();
         User_label1 = new javax.swing.JLabel();
+        User_foto = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,28 +151,49 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        UserName_label.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
-        UserName_label.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        UserName_label.setMinimumSize(new java.awt.Dimension(143, 60));
-
-        User_label1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        User_label1.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         User_label1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         User_label1.setMinimumSize(new java.awt.Dimension(143, 60));
+
+        User_foto.setName("User_foto"); // NOI18N
+        User_foto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                User_fotoFocusGained(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setText("JavaChat");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(UserName_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(User_label1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(User_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(User_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(UserName_label, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(User_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(User_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addComponent(User_foto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(16, 16, 16))
         );
+
+        User_foto.getAccessibleContext().setAccessibleName("User_foto");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,14 +222,19 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_chat_listaMouseClicked
 
+    private void User_fotoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_User_fotoFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_User_fotoFocusGained
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panel_chats;
     private javax.swing.JPanel Panel_contactos;
     private javax.swing.JPanel Panel_opciones;
-    private javax.swing.JLabel UserName_label;
+    private javax.swing.JLabel User_foto;
     private javax.swing.JLabel User_label1;
     private javax.swing.JList chat_lista;
     private javax.swing.JList contactos_lista;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane_contactos;

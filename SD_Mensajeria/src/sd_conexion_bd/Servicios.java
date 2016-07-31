@@ -12,6 +12,9 @@ package sd_conexion_bd;
 
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
@@ -30,8 +33,8 @@ public class Servicios extends SQLQuery{
     
     public boolean validar_userName(String userName, String password, usuario u) throws IOException{
         try{
-            this.conectar("localhost:3306", "mensajeria","root","1234");
-            System.out.println("\n" + userName+ " " + password + "\n");
+            this.conectar("localhost:3306", "mensajeria","root","");
+            //System.out.println("\n" + userName+ " " + password + "\n");
             this.consulta=this.conexion.prepareStatement("call buscar_por_user(\""+userName+"\",\""+password+"\");");
             this.datos=this.consulta.executeQuery();
             while(this.datos.next()){
@@ -41,8 +44,6 @@ public class Servicios extends SQLQuery{
                 u.setUser(userName);
                 Blob imagen = datos.getBlob("foto");
                 Image im = javax.imageio.ImageIO.read(imagen.getBinaryStream());
-                
-                
                 if (im != null){
                 
                 ImageIcon i = new ImageIcon(im.getScaledInstance(100,120, 0));
@@ -65,7 +66,7 @@ public class Servicios extends SQLQuery{
     */
     public void cargar_contactos(JList lista, String userName, int u_id){
         try{
-            this.conectar("localhost:3306", "mensajeria","root","1234");
+            this.conectar("localhost:3306", "mensajeria","root","");
             this.consulta=this.conexion.prepareStatement("call consultar_contactos(\""+userName+"\",\""+u_id+"\");");
             this.datos=this.consulta.executeQuery();
             DefaultListModel modelo = new DefaultListModel();
@@ -73,6 +74,25 @@ public class Servicios extends SQLQuery{
                 modelo.addElement(datos.getString("nombre")+" "+datos.getString("apellido"));
             }
             lista.setModel(modelo);
+        }
+        catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(Servicios.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "No se pudo conectar correctamente a la base de datos");
+        }        
+    }
+    
+     public void registrar_usuario(String nombre, String apellido, String ciudad, String user, String pass,  String foto) throws FileNotFoundException{
+         
+         FileInputStream  fis = null;
+         try{
+           
+            File file = new File(foto);
+            fis = new  FileInputStream(file);
+            this.conectar("localhost:3306", "mensajeria","root","");
+            this.consulta=this.conexion.prepareStatement("call registrar_usuario(\""+nombre+"\",\""+apellido+"\",\""+ciudad+"\",\""+user+"\",\""+pass+"\",\""+foto+"\");");
+            this.datos=this.consulta.executeQuery();
+            
+            
         }
         catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Servicios.class.getName()).log(Level.SEVERE, null, ex);

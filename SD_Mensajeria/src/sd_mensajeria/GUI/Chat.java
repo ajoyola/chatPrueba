@@ -48,7 +48,7 @@ public class Chat extends javax.swing.JFrame {
         setTitle("JavaChat");
         setMaximumSize(new java.awt.Dimension(621, 430));
         setMinimumSize(new java.awt.Dimension(621, 430));
-        setPreferredSize(new java.awt.Dimension(621, 430));
+        setPreferredSize(new java.awt.Dimension(893, 533));
         setResizable(false);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));

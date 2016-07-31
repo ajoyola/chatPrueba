@@ -83,7 +83,7 @@ public class Inicio_Sesion extends javax.swing.JFrame {
             }
         });
 
-        txt_user.setText("ingrese su nombre de usario");
+        txt_user.setText("joyce-adri");
         txt_user.setName("txt_usuario"); // NOI18N
         txt_user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,12 +163,8 @@ public class Inicio_Sesion extends javax.swing.JFrame {
 
     
     public String getHash(String pass) throws NoSuchAlgorithmException, UnsupportedEncodingException{
-      String hash;
- 
-        //String c ="8C6976E5B5410415BDE908BD4DEE15DFB167A9C873FC4BB8A81F6F2AB448A918";
-      
-        //System.out.println("Clave sin cifrar:"+ pass);
-        //System.out.println("\n");
+        String hash;
+
         MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
         byte messageDigest[] = algorithm.digest(pass.getBytes("UTF-8"));
 
@@ -179,8 +175,7 @@ public class Inicio_Sesion extends javax.swing.JFrame {
         //Obtiene el hash de la contraseña
         hash = hexString.toString();
         
-        //System.out.println("Clave cifrada guardada: "+c);
-        //System.out.println("Clave cifrada: "+senhahex);
+
       return hash;
     }
     
@@ -199,9 +194,6 @@ public class Inicio_Sesion extends javax.swing.JFrame {
                     //buscar en los user el nombre del usuario                 
                     String semilla="2016";
                     String encript=DigestUtils.sha1Hex(pass+semilla);
-                    //System.out.println(DigestUtils.sha1Hex(pass));
-                    System.out.println("CLAVE SIN ENCRIPTAR: " + pass);
-                    System.out.println("CLAVE ENCRIPTADA: " + encript);
                 
                 try {
                     if(s.validar_userName(user,encript, UsuarioInfo)){
@@ -232,7 +224,8 @@ public class Inicio_Sesion extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_userActionPerformed
 
     private void btn_registroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registroActionPerformed
-       java.awt.EventQueue.invokeLater(new Runnable() {
+       this.setVisible(false);
+        java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {
                             new Registro().setVisible(true);                         
                         }

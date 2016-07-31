@@ -227,7 +227,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         String info = (String)contactos_lista.getSelectedValue();
         String userInfo[] = info.split(" ", 2);
-        System.out.print(userInfo[0]+"---"+userInfo[1]);
+        //System.out.print(userInfo[0]+"---"+userInfo[1]);
         //verificar si existe chat anterior si es asi abrirlo
         //sino mostrar una nueva ventana para el chat entre ellos
         //obtener estado del contacto

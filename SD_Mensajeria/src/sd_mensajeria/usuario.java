@@ -17,9 +17,25 @@ public class usuario {
     public String nombre;
     public String apellido;
     public String user;
+    public String ciudad;
     public ImageIcon foto;
 
     public usuario() {
+    }
+
+    public usuario(String nombre, String apellido, String user, String ciudad) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.user = user;
+        this.ciudad = ciudad;
+    }
+   
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
     }
 
     public ImageIcon getFoto() {

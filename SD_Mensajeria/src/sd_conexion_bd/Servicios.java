@@ -19,6 +19,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.imageio.ImageIO;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -29,7 +30,7 @@ public class Servicios extends SQLQuery{
     
     public boolean validar_userName(String userName, String password, usuario u) throws IOException{
         try{
-            this.conectar("localhost:3306", "mensajeria","root","");
+            this.conectar("localhost:3306", "mensajeria","root","1234");
             System.out.println("\n" + userName+ " " + password + "\n");
             this.consulta=this.conexion.prepareStatement("call buscar_por_user(\""+userName+"\",\""+password+"\");");
             this.datos=this.consulta.executeQuery();
@@ -39,11 +40,17 @@ public class Servicios extends SQLQuery{
                 u.setApellido(datos.getString("apellido"));
                 u.setUser(userName);
                 Blob imagen = datos.getBlob("foto");
-                ImageIcon i = new ImageIcon(javax.imageio.ImageIO.read(imagen.getBinaryStream()).getScaledInstance(100,120, 0));
-                u.setFoto(i); 
-                //System.out.println(i);
-            }
-            return true;
+                Image im = javax.imageio.ImageIO.read(imagen.getBinaryStream());
+                
+                
+                if (im != null){
+                
+                ImageIcon i = new ImageIcon(im.getScaledInstance(100,120, 0));
+                u.setFoto(i);
+                
+                }
+               return true;
+            }return false;  
         }  
         catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(Servicios.class.getName()).log(Level.SEVERE, null, ex);
@@ -58,12 +65,12 @@ public class Servicios extends SQLQuery{
     */
     public void cargar_contactos(JList lista, String userName, int u_id){
         try{
-            this.conectar("localhost:3306", "mensajeria","root","");
+            this.conectar("localhost:3306", "mensajeria","root","1234");
             this.consulta=this.conexion.prepareStatement("call consultar_contactos(\""+userName+"\",\""+u_id+"\");");
             this.datos=this.consulta.executeQuery();
             DefaultListModel modelo = new DefaultListModel();
             while(this.datos.next()){
-                modelo.addElement(datos.getString("user")+": "+datos.getString("nombre")+" "+datos.getString("apellido"));
+                modelo.addElement(datos.getString("nombre")+" "+datos.getString("apellido"));
             }
             lista.setModel(modelo);
         }

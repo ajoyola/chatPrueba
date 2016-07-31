@@ -83,7 +83,7 @@ public class Inicio_Sesion extends javax.swing.JFrame {
             }
         });
 
-        txt_user.setText("joyce-adri");
+        txt_user.setText("ingrese su nombre de usario");
         txt_user.setName("txt_usuario"); // NOI18N
         txt_user.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,6 +205,7 @@ public class Inicio_Sesion extends javax.swing.JFrame {
                 
                 try {
                     if(s.validar_userName(user,encript, UsuarioInfo)){
+                    //if(s.validar_userName(user,pass, UsuarioInfo)){
                         this.setVisible(false);
                         String datos = UsuarioInfo.getNombre() +" " +UsuarioInfo.getApellido();
                         JOptionPane.showMessageDialog(null, "Bienvenid@!! " + datos,"Mensaje", JOptionPane.INFORMATION_MESSAGE);
@@ -214,8 +215,9 @@ public class Inicio_Sesion extends javax.swing.JFrame {
                             }
                         });
                     }else{//user incorrecto
-                        JOptionPane.showMessageDialog(null, "Especificó un usuario o clave incorrecta", "Error en los datos", JOptionPane.ERROR_MESSAGE);
-                        System.out.println("CREDENCIALES INCORRRECTAS");
+                        JOptionPane.showMessageDialog(null, "CREDENCIALES INCORRRECTAS", "Error en los datos", JOptionPane.ERROR_MESSAGE);
+                        txt_user.setText("");
+                        txt_password.setText("");
                     }
                 } catch (IOException ex) {
                     Logger.getLogger(Inicio_Sesion.class.getName()).log(Level.SEVERE, null, ex);

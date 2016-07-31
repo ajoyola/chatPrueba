@@ -20,10 +20,6 @@ public class usuario {
     public ImageIcon foto;
 
     public usuario() {
-        this.ID=0;
-        this.nombre="nombre usuario";
-        this.apellido="apellido";
-        this.user ="user";
     }
 
     public ImageIcon getFoto() {

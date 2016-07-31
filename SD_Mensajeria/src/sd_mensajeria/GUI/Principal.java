@@ -26,16 +26,12 @@ public class Principal extends javax.swing.JFrame {
         int u_id=UserInfo.getID();
         ImageIcon o = UserInfo.getFoto();
         
-        User_label1.setText(userName.toUpperCase());
+        User_name_label.setText(UserInfo.getNombre()+UserInfo.getApellido());
+        User_label2.setText(userName.toUpperCase());
         User_foto.setIcon(o);
         
         s.cargar_contactos(contactos_lista, userName, u_id);
         contactos_lista.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        contactos_lista.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                contactos_listaMouseClicked(evt);
-            }
-        });
         jScrollPane_contactos.setViewportView(contactos_lista);
     }
 
@@ -58,9 +54,10 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         opciones_List = new javax.swing.JList();
         jPanel1 = new javax.swing.JPanel();
-        User_label1 = new javax.swing.JLabel();
+        User_name_label = new javax.swing.JLabel();
         User_foto = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        User_label2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -151,9 +148,9 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        User_label1.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
-        User_label1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        User_label1.setMinimumSize(new java.awt.Dimension(143, 60));
+        User_name_label.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
+        User_name_label.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        User_name_label.setMinimumSize(new java.awt.Dimension(143, 60));
 
         User_foto.setName("User_foto"); // NOI18N
         User_foto.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -165,6 +162,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setText("JavaChat");
 
+        User_label2.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
+        User_label2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        User_label2.setMinimumSize(new java.awt.Dimension(143, 60));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -172,25 +173,34 @@ public class Principal extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(User_foto, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(User_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(User_name_label, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(84, 84, 84))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGap(188, 188, 188)
+                    .addComponent(User_label2, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(327, Short.MAX_VALUE)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(User_label1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
-                    .addComponent(User_foto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(User_foto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(User_name_label, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(18, 56, Short.MAX_VALUE)))
                 .addGap(16, 16, 16))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(76, Short.MAX_VALUE)
+                    .addComponent(User_label2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(24, 24, 24)))
         );
 
         User_foto.getAccessibleContext().setAccessibleName("User_foto");
@@ -215,7 +225,15 @@ public class Principal extends javax.swing.JFrame {
 
     private void contactos_listaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_contactos_listaMouseClicked
         // TODO add your handling code here:
-        String s=(String)contactos_lista.getSelectedValue();
+        String info = (String)contactos_lista.getSelectedValue();
+        String userInfo[] = info.split(" ", 2);
+        System.out.print(userInfo[0]+"---"+userInfo[1]);
+        //verificar si existe chat anterior si es asi abrirlo
+        //sino mostrar una nueva ventana para el chat entre ellos
+        //obtener estado del contacto
+        if (evt.getClickCount() == 2){
+            new Chat(info).setVisible(true);//--------enviar info foto historial y estado del contacto
+        }
     }//GEN-LAST:event_contactos_listaMouseClicked
 
     private void chat_listaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_chat_listaMouseClicked
@@ -231,7 +249,8 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel Panel_contactos;
     private javax.swing.JPanel Panel_opciones;
     private javax.swing.JLabel User_foto;
-    private javax.swing.JLabel User_label1;
+    private javax.swing.JLabel User_label2;
+    private javax.swing.JLabel User_name_label;
     private javax.swing.JList chat_lista;
     private javax.swing.JList contactos_lista;
     private javax.swing.JLabel jLabel1;

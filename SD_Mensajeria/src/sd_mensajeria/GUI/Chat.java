@@ -190,6 +190,23 @@ public class Chat extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton3ActionPerformed
  
+    // getter y setter de lista de chat
+    public JList getLst_chat() {
+        return Lst_chat;
+    }
+
+    public void setLst_chat(JList Lst_chat) {
+        this.Lst_chat = Lst_chat;
+    }
+
+    //método que añade nuevos chats a la lista de chats
+    public void addChatToList(String chat){
+        DefaultListModel<String> model = new DefaultListModel<>();
+        Lst_chat = new JList<>( model );
+         model.addElement( chat );
+        
+    }
+
     /**
      * @param args the command line arguments
      */

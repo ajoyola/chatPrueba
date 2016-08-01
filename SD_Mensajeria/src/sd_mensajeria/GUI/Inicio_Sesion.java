@@ -25,6 +25,7 @@ import javax.crypto.*;
 import javax.crypto.interfaces.*;
 import javax.crypto.spec.*;
 import org.apache.commons.codec.digest.DigestUtils;
+import sd_activeMQ.Receiver;
 
 
 /**
@@ -182,7 +183,12 @@ public class Inicio_Sesion extends javax.swing.JFrame {
     
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
        
-        
+         try {
+            // TODO add your handling code here:
+            Receiver r = new Receiver("Angely");
+        } catch (Exception ex) {
+            Logger.getLogger(Inicio_Sesion.class.getName()).log(Level.SEVERE, null, ex);
+        }
         final Servicios s = new Servicios(); 
         final usuario UsuarioInfo = new usuario();
         if(txt_user.getText().equals("") || txt_password.getPassword() == null){

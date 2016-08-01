@@ -181,8 +181,7 @@ public class Inicio_Sesion extends javax.swing.JFrame {
     }
     
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        
-        
+       
         
         final Servicios s = new Servicios(); 
         final usuario UsuarioInfo = new usuario();

@@ -79,7 +79,9 @@ public class Receiver implements MessageListener{
          TextMessage msg = (TextMessage)message;
          // print the message
 	System.out.println("Mensaje Recibido: " + msg.getText());
-        
+        Chat c = new Chat("CHAT");
+        c.addChatToList(msg.getText());
+        c.setVisible(true);
         
      } catch (JMSException jmse) {
          jmse.printStackTrace(); 

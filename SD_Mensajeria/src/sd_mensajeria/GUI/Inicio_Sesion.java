@@ -26,6 +26,7 @@ import javax.crypto.interfaces.*;
 import javax.crypto.spec.*;
 import org.apache.commons.codec.digest.DigestUtils;
 
+
 /**
  *
  * @author Kattya Desiderio
@@ -180,9 +181,11 @@ public class Inicio_Sesion extends javax.swing.JFrame {
     }
     
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-        // TODO add your handling code here:
-        Servicios s = new Servicios(); 
-        usuario UsuarioInfo = new usuario();
+        
+        
+        
+        final Servicios s = new Servicios(); 
+        final usuario UsuarioInfo = new usuario();
         if(txt_user.getText().equals("") || txt_password.getPassword() == null){
             JOptionPane.showMessageDialog(null, "Debe llenar todos los campos", "No ha ingresado datos", JOptionPane.ERROR_MESSAGE);
         }else{
@@ -199,7 +202,7 @@ public class Inicio_Sesion extends javax.swing.JFrame {
                     if(s.validar_userName(user,encript, UsuarioInfo)){
                     //if(s.validar_userName(user,pass, UsuarioInfo)){
                         this.setVisible(false);
-                        String datos = UsuarioInfo.getNombre() +" " +UsuarioInfo.getApellido();
+                        final String datos = UsuarioInfo.getNombre() +" " +UsuarioInfo.getApellido();
                         JOptionPane.showMessageDialog(null, "Bienvenid@!! " + datos,"Mensaje", JOptionPane.INFORMATION_MESSAGE);
                         java.awt.EventQueue.invokeLater(new Runnable() {
                             public void run() {

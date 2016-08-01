@@ -6,7 +6,10 @@
 package sd_mensajeria.GUI;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.sql.Blob;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -255,7 +258,7 @@ public class Registro extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          Servicios s = new Servicios(); 
+          final Servicios s = new Servicios(); 
           String nombre,apellido,ciudad,user,pass,foto;
           
           nombre = txtNombre.getText();
@@ -272,13 +275,17 @@ public class Registro extends javax.swing.JFrame {
           }
           else
           {    
-              s.registrar_usuario(nombre,apellido,ciudad,user,pass,null);
+              try {
+                  s.registrar_usuario(nombre,apellido,ciudad,user,pass,null);
+              } catch (FileNotFoundException ex) {
+                  Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
+              }
               txtNombre.setText("");
               txtApellido.setText("");
               txtUsuario.setText("");
               txtpass.setText("");
               txtFoto.setText("");
-              usuario UsuarioInfo = new usuario(nombre,apellido,user,ciudad);
+              final usuario UsuarioInfo = new usuario(nombre,apellido,user,ciudad);
               
               java.awt.EventQueue.invokeLater(new Runnable() {
                         public void run() {

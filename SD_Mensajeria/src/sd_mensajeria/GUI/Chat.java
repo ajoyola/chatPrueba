@@ -186,8 +186,13 @@ public class Chat extends javax.swing.JFrame {
     }//GEN-LAST:event_User_fotoFocusGained
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        
+        // TODO add your handling code here:  
+        Sender s = new Sender("Angely");
+               try {
+                   s.sendMessage(Txt_texto.getText(), "Angely");
+               } catch (Exception ex) {
+                   Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
+               }
     }//GEN-LAST:event_jButton3ActionPerformed
  
     // getter y setter de lista de chat

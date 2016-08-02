@@ -185,7 +185,7 @@ public class Inicio_Sesion extends javax.swing.JFrame {
        
          try {
             // TODO add your handling code here:
-            Receiver r = new Receiver("Angely");
+            Receiver r = new Receiver("Angely"); // id+username del usuario que inicia sesión
         } catch (Exception ex) {
             Logger.getLogger(Inicio_Sesion.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -80,7 +80,12 @@ public class Receiver implements MessageListener{
          // print the message
 	System.out.println("Mensaje Recibido: " + msg.getText());
         Chat c = new Chat("CHAT");
-        c.addChatToList(msg.getText());
+        c.addChatToList(msg.getText()); // metodo que añade el mensaje a la lista del chat 
+        
+        // en esta parte se enviará el mensaje a la base de datos 
+        // ya que ya fue consumido por AMQ
+        
+        
         c.setVisible(true);
         
      } catch (JMSException jmse) {

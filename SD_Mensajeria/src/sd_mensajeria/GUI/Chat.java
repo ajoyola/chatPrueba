@@ -187,9 +187,9 @@ public class Chat extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:  
-        Sender s = new Sender("Angely");
+        Sender s = new Sender("Angely"); // id+uername del que envía el mensaje
                try {
-                   s.sendMessage(Txt_texto.getText(), "Angely");
+                   s.sendMessage(Txt_texto.getText(), "Angely"); //  id+username del desitnario
                } catch (Exception ex) {
                    Logger.getLogger(Chat.class.getName()).log(Level.SEVERE, null, ex);
                }
